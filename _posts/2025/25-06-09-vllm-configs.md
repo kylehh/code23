@@ -9,20 +9,20 @@ tags:
 ---
 
 Some details on Config loading in vLLM
+
 1. Configs
 `hf_config`: The config.json from HF  
 `hf_text_config`: `llm_config` from config.json
+
 ```python
 # api_server.py -> run_server -> init_app -> serve_http
 def init_app()
   ...
   engine = AsyncLLMEngine.from_engine_args()
-
 class AsyncEngine:
   def from_engine_args(...)
     ...
     vllm_config = engine_args.create_engine_config(usage_context)
-
 class EngineArgs:
   def create_engine_config(self):
       ...
@@ -34,14 +34,12 @@ class EngineArgs:
   def create_model_config(self):
     ...
     return ModelConfig(...)
-
 class ModelConfig:
   def __post_init__(self):
     ...
     hf_config = get_config(...) # read from the config registered at vllm/transformers_utils/configs/
     # Read `auto_map` configs
     self.hf_text_config = get_hf_text_config(self.hf_config)
-
   def get_hf_text_config(config: PretrainedConfig):
       ...
       ## transformers lib
@@ -87,8 +85,7 @@ MultiModel Registration decorator
     - `class BaseInternVLProcessor(ABC)`
     - This is used at `InternVLProcessingInfo.get_hf_processor`
 
+![Alt text](/assets/images/2025/25-04-21-4bitquant_files/bf16.png)
 
-
-
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/bf16.png)```
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/bf16.png)
 
