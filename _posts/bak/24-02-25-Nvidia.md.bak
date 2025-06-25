@@ -1,0 +1,24 @@
+---
+title: Nvidia GenAI Stack
+mathjax: true
+toc: true
+categories:
+  - Study 
+tags:
+  - GPU
+---
+
+## Nvidia NeMo
+- GenAI framework
+- on DGX Cloud/Kubernetes Clusters
+- AutoConfigurator
+- SFT and PEFT
+
+
+## Nvidia Triton
+- Inference Server
+- TensorRT-LLM [example](https://github.com/NVIDIA/TensorRT-LLM/tree/main/examples/llama#mistral-v01)
+
+
+## Nvidia Merlin
+- Recommender system

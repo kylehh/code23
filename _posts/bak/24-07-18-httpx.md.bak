@@ -1,0 +1,56 @@
+---
+title: Httpx
+mathjax: true
+toc: true
+categories:
+  - Code
+tags:
+  - Python
+---
+
+HTTPX is another HTTP client similar to Requests. It's used as OpenAI's `OpenAI` constructor for `http_client` option.
+
+For example, if we have a POST request by `Reuqest` lib.
+```python
+resp = requests.post(url, headers=headers, json=body)
+print(resp.json())
+```
+It can be transferred to httpx with following ways
+## 1 httpx example
+```python
+resp = httpx.post(url, headers=headers, json=body, timeout=httpx.Timeout(timeout=30.0))
+```
+## 2 httpx Client example
+Httpx Client is similar to `requests.Session()`, and should be used for production code
+```python
+client = httpx.Client()
+resp = client.post(url, headers=headers, json=body, timeout=httpx.Timeout(timeout=30.0))
+```
+
+## 3 httpx request example
+```python
+client = httpx.Client(timeout=httpx.Timeout(timeout=30.0))
+request = httpx.Request('POST', url,headers=headers,json=body)
+resp = client.send(request)
+```
+
+## 4 http Client example 2
+```python
+client= httpx.Client(base_url="https://api.nvcf.nvidia.com", headers=headers, timeout=httpx.Timeout(timeout=30.0))
+resp = client.post('/v2/nvcf/pexec/functions/a52271e8-e395-485e-9c77-d51d28b82e8f', json=body)
+```
+## 5 http Client example 3
+```python
+client= httpx.Client(base_url="https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/",headers=headers, timeout=httpx.Timeout(timeout=30.0))
+resp = client.post('/a52271e8-e395-485e-9c77-d51d28b82e8f',json=body)
+print(resp.request.url)
+# https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/a52271e8-e395-485e-9c77-d51d28b82e8f
+```
+## 6 http Client example FAIL
+This may ONLY happens to NVCF. The last `/` at the end of the URL would fail the request. So we can NOT leave post url to be None.
+```python
+client= httpx.Client(base_url="https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/a52271e8-e395-485e-9c77-d51d28b82e8f",headers=headers, timeout=httpx.Timeout(timeout=30.0))
+resp = client.post('',json=body)
+print(resp.request.url)
+# https://api.nvcf.nvidia.com/v2/nvcf/pexec/functions/a52271e8-e395-485e-9c77-d51d28b82e8f/
+```

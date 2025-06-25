@@ -1,0 +1,91 @@
+---
+title: Bezier Curves
+mathjax: true
+toc: true
+categories:
+  - Study
+tags:
+  - math
+---
+
+This is one of most amazing [videos](https://www.youtube.com/watch?v=jvPPXbo87ds) for math concept introduction，together with a great [primer](https://pomax.github.io/bezierinfo/index.html)
+
+## 0 Defination
+Lerp means **L**inear int**erp**olation.
+$$P(t) = (1-t)P_0 + tP_1$$
+De Casteljau defination of Bezier curves is illustrated below with recursive lerps.
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/lerp.png)
+Separeting the $P$ values, gives you basis of Bezier functions
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/basis.png) 
+Two other definatinos are listed as polynomial coefficient and Matrix form
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/poly.png)
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/matrix.png)
+ 
+## 1. B-Spline
+The shortage of Bezier curves are 
+1. No local control (The basis covers the whole range)
+2. Does NOT interpolate (except for start/end points)
+3. Unstable and expensive to calculate
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/localcontrol.png) 
+and the B-Spline solves all these issues
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/bspline.png)
+We only consider equal knot interval B-splines
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/concepts.png)
+
+## 2. Parametric Continuity
+$C^i$ continuous if 
+$$A^{(i)}(t_{end})=B^{(i)}(t_{start}) \\ i={0,1,..n} 
+$$ 
+
+The continuity of B-spline is decided by the control points next to the knots. 
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/3types.png) 
+**Broken** and **Aligned** knots give $C^0$ 
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/c0.png)
+To get continuous velcocity, $P_4$ can NOT be random.
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/c1.png)
+So, **mirrored** knots gives $C^1$ but NOT $C^2$
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/notc2.png)
+To get $C^2$, $P_5$ is locked
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/c2.png)
+
+$C^3$ gives you totally no control of the curve, and super sensative to the initial conditions. 
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/c3.png)
+And it's same as extrapolating t to larger than 1 values. 
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/c3t.png) 
+So it's not just $C^3$ but $C^\infin$  
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/cinf.png)
+
+## 3 Geometry Continuity
+For **Aligned** knots, if we ignore the magnitude of the velocity, and only looks at unit vector and it's norm, it's still continuous and called $G^1$.
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/g1.png)
+How about $G^2$? This is the continuity of the reflections!!!
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/g1surface.png)
+Even the circle surface is NOT $G^2$
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/g1circle.png)
+Why? The norm direction of the curve have a non smooth change 
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/why.png)
+ 
+
+## 4 Curvature
+Curvature is defined as below
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/curvature.png)
+and the relation between continuity and curvature is tricky
+1. $C^0$ may have continuous curvature
+2. $C^1$ does NOT guarantee the
+ continuous curvature
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/relation.png)
+
+So we can understand GC as below
+1. $G^1$ is aligned curvature
+2. $G^2$ is continuous curvature
+3. $G^3$ is $C^1$ in curvature comb
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/g3.png)
+
+or the official defination of GC is below.
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/gc0.png)
+and it's related to Parametric Continuity as below
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/cg.png)
+
+Now you can see the reflection is connnected on $G^2$ surfaces.
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/g2surface.png) 
+![Alt text](/assets/images/2024/24-05-14-Bezier_files/g2dots.png) 

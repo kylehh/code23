@@ -1,0 +1,23 @@
+---
+title: LLM overview in 2024
+mathjax: true
+toc: true
+categories:
+  - Study 
+tags:
+  - LLM
+---
+
+1. Why SFT is before RLHF    
+- RLHF need basic capability from the model.
+ ![Alt text](/assets/images/2024/24-02-10-LLM_files/RLHF.png)
+2. 2 steps in RLHF  
+If only learns from HF, then you knows answer to a specific question, but NOT to general questions.
+- Learn Human preference by training a Reward Model to give rewards for answers
+![Alt text](/assets/images/2024/24-02-10-LLM_files/RLHF1.png)
+- Adjust network output based on the rewards
+![Alt text](/assets/images/2024/24-02-10-LLM_files/RLHF2.png)
+3. Alignment  
+SFT + RLHF = Alignment (to human)
+![Alt text](/assets/images/2024/24-02-10-LLM_files/alignment.png)
+

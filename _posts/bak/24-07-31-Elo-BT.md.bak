@@ -1,0 +1,24 @@
+---
+title: Bradley Terry and Elo Score
+mathjax: true
+toc: true
+categories:
+  - Study
+tags:
+  - math
+---
+
+Worked on SW(Similarity Weighted) routing policy on [LLM Router](https://lmsys.org/blog/2024-07-01-routellm/), and learned Bradyley Terry and Elo score. Very interesting topics
+
+## 1 Elo Score
+Elo is how Chess players rank their levels. Similiarly it's used for Pingpong players. 
+Yi Zhu also write a [blog](https://bryanyzhu.github.io/posts/2024-06-20-elo-part1/) about it and gives detailed explanations.
+
+The basic idea is a score system that a player with 400 higher scores is 10x more likly to win. That's why the defaul scaler 400 is used 
+
+## 2 Bradley Terry
+Bradley Terry is a simple rule to rank teams and the interseting part is how it is related to logistical regressoin. 
+
+
+ 
+![Alt text](/assets/images/2024/24-05-05-KAN_files/moti.png)

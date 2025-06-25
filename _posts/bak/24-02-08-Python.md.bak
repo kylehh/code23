@@ -1,0 +1,25 @@
+---
+title: Python tips
+mathjax: true
+toc: true
+categories:
+  - Study
+tags:
+  - Python
+---
+
+Random Python tips I collect recently.
+
+1. **IMMUTABLE**: `String`, `Tuple`, `Bytes`, Booleans, Numbers
+2. **MUTABLE**: `List`, `Dic`, `Set`
+3. `Tuple()` can use [], but NO `add` or `append`
+4. `Set {}`, **no order**, can NOT use [], {1,2}.add(3), **NO DUPLICATE**
+5. `String` can use [], but immutable, str[0] = c would fail
+6. [x]*10 will generate 10 refer to the SAME x, change 1 will change ALL
+7. [[] for _ in range(10)] instead
+8. print(f'{value=}') **I love it**
+9. list(dict) == list(disk.keys())
+10. a=b=123, other useage may have side effect
+11. 10<= a <30 works in Python
+12. list(range(1,n+1))
+13. ans.append(list_b) vs ans.append(list_b[:]). Future modification of `list_b` may have side effect

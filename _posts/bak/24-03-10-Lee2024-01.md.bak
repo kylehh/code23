@@ -1,0 +1,42 @@
+---
+title: GenAI by Hung-yi Lee 2024-01
+mathjax: true
+toc: true
+categories:
+  - Study
+tags:
+  - LLM
+---
+
+It's time to learn ML/GenAI with Dr Lee AGAIN in 2024.  
+
+Here is a quote from the new manga Frieren that show how fast this field is developing: Someone who is super strong 80yrs ago can be easily taken care by a apprentice, so DL knowledge from 8 weeks may need to be refreshed.   
+![Alt text](/assets/images/2024/24-03-10-Lee2024-01_files/frieren.png)
+
+## 0 Couple of interesting points
+The world model, is to let model output the coordinates of a city in a world map, and it works well.  
+![Alt text](/assets/images/2024/24-03-10-Lee2024-01_files/world.png)
+
+Later, it covers 5 aspects of prompt engineer related topics.  
+![Alt text](/assets/images/2024/24-03-10-Lee2024-01_files/5.png)  
+
+## 1 Magic words
+What works, liek CoT and EmotionPrompt   
+![Alt text](/assets/images/2024/24-03-10-Lee2024-01_files/emotion.png)  
+What's not working? like politeness.  
+![Alt text](/assets/images/2024/24-03-10-Lee2024-01_files/polite.png)
+
+
+## 2 Add context
+This could be few-shot learning. Interesting point is what if you provide flipped labels (wrong examples) to LLM, what would happen.  
+![Alt text](/assets/images/2024/24-03-10-Lee2024-01_files/flipped.png)
+
+
+## 3 Decomposite the task
+You can do step-by-step decomp, Self-reflection, self-consistency. When all combined together, that's Tree of Throught.  
+![Alt text](/assets/images/2024/24-03-10-Lee2024-01_files/tot.png)
+
+## 4 Tools
+RAG is type of tool using, and GPT really like to call DALL-E when "draw" is in the prompt.  
+A new paper [AnyTool](https://arxiv.org/abs/2402.04253) brings the tool usage to a new level!  
+![Alt text](/assets/images/2024/24-03-10-Lee2024-01_files/anytool.png)

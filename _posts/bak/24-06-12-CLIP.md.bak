@@ -1,0 +1,34 @@
+---
+title: CLIP
+mathjax: true
+toc: true
+categories:
+  - Study
+tags:
+  - CV
+---
+
+Dr Vlog gave a talk on [CLIP](https://www.youtube.com/watch?v=dlrvjEA1cqw) to Math PhDs and summarized in a 50mins video. 
+
+## 0 Paper
+OpenAI's early works for early multimodality model training
+![Alt text](/assets/images/2024/24-06-12-CLIP_files/paper.png)
+
+## 1 How it works
+The fundamention idea is contrastive learning between image and text contents, thus it gets the name **CLIP( Contrastive Language-Image Pretraining)**
+![Alt text](/assets/images/2024/24-06-12-CLIP_files/1.png)
+Can be used for zero-shot inferences, which is the main advantage.
+![Alt text](/assets/images/2024/24-06-12-CLIP_files/2.png)
+and it's zero shot result is even higher than 1 shot, which is totally contract to human behavior. So this is telling us the real "learning" capability of human is still way stronger than current models.
+![Alt text](/assets/images/2024/24-06-12-CLIP_files/zeroshot.png)
+
+Here is the dummy training code for CLIP
+![Alt text](/assets/images/2024/24-06-12-CLIP_files/code.png)
+It adapts well to images sets which is dramatically different from the original one
+![Alt text](/assets/images/2024/24-06-12-CLIP_files/clipresult.png)
+
+## 3 Applications
+Apple's MM1 model is based on CLIP
+![Alt text](/assets/images/2024/24-06-12-CLIP_files/mm1.png)
+and it also shows amazing few-shots learing capability
+![Alt text](/assets/images/2024/24-06-12-CLIP_files/mm1res.png)

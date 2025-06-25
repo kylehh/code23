@@ -1,0 +1,46 @@
+---
+title: Pytest
+mathjax: true
+toc: true
+categories:
+  - Code
+tags:
+  - Python
+---
+
+Unit Test, is something I ignore for a long time. I know it existence but barely initiate one. If it's already in the system, I don't mind add one, like for Canopy.   
+But recent requests I get, it always ask for unit tests, so here are some finding regarding pytest.
+
+## 1. Test with Pytest
+- Run code with pytest is straightforward, just `pytest code.py`
+- Use `assert` for test check, or define an assert_function 
+- Use `with pytest.raises(ValueError):` for konwn exceptions
+- Use `with pytest.warns(UserWarning):` to catch known warnings
+- Use `-s` flag to show stand output
+
+## 2. Pytest attributes
+- `@pytest.fixture` for predefine items can be used as function argument  
+  - Use `autouse=True` argument to auto requested by all tests, so you MUST supply augments of the fixture (if any) by `mark.parameterize`
+  - See example below 
+    ```python
+    @pytest.fixture(autouse=True)
+    def mock_v1_local_models(requests_mock: Mocker, base_url: str) -> None:
+      requests_mock.get(
+          f"{base_url}/models",
+          json={"data": 123},
+      )
+
+    @pytest.mark.parametrize(
+        "base_url",["bogus"],
+    )
+    def test_function(public_class: type):
+      assert public_class().flag
+    ```
+- use `pytest.mark.parameterize` to set groups of arguments for test function or fixtures.
+  - Example of (v11, v12) and (v21, v22) value groups for argument (param1, param2)
+    ```
+    @pytest.mark.parametrize("param1, param2,
+    [("v11", "v12"),
+     ("v21", "v22")])
+    ```  
+  - It can also be used to set parameters for fixtures

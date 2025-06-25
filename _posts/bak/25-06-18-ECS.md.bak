@@ -1,0 +1,69 @@
+---
+title: AWS ECS
+mathjax: true
+toc: true
+categories:
+  - Study
+tags:
+  - Cloud
+---
+
+I finally got access to an AWS account again and volunteernly to test deploying Dynamo on AWS ECS, which I only barely touched when Fargate was released.  
+
+## 1 Elastic Contaienr Service
+Now with much more knowledge with K8S, I can more easily understand the position of ECS, basically it's an AWS version of container orchestration system. I believe they had the ambition to take over K8S, but eventually leave space to AKS, which is managed K8S.
+Couple of concepts in ECS
+1. Cluster: It's a cluster, literally, but have two options.
+- EC2: using EC2 to build a cluster
+- Fargate: Serverless Option, provision instances based on demands
+
+2. Task: Very similar to a docker composer. It defines docker image and related resources to run a docker image. and you can directly start a task with a task defination. 
+
+3. Service: This is the orchestration part. It's the recommended way to run a task, with auto scaling and fault torlerent comes with it. 
+
+## 2. Dynamo Deployment
+The Dynamo deployment is actually very straightfoward, and all I need to do is to convert the official Helm Chart deployment into Task defination ( Docker Compose equavelent), then you can either start a service or a task with it.
+
+Hello World example also get pass OOTB. vLLM example is very close to work (Hardware limitation is the blocker so far)
+
+## 3. SSH into ECS containers
+Somehow the public IP of the container is not accessible, maybe due to AWS's complicated network setups. I was trying to find a way to get access to it, but it involves Load Balance, API Gateway, VPC Link, etc, maybe worth a new blogs.
+
+A workaround is to log into the container and run the test locally. Here are the steps
+1. Install `session-manager-plugin` for AWS CLI
+2. Create SSM permission policy and attach this policy to `ecsTaskExecutionRole` role
+```sh
+{
+   "Version": "2012-10-17",
+   "Statement": [
+       {
+       "Effect": "Allow",
+       "Action": [
+            "ssmmessages:CreateControlChannel",
+            "ssmmessages:CreateDataChannel",
+            "ssmmessages:OpenControlChannel",
+            "ssmmessages:OpenDataChannel"
+       ],
+      "Resource": "*"
+      }
+   ]
+}
+```
+3. Add ECS ExecuteCommand permission to your IAM USER for CLI. It's included in the `ECSFullAccess` policy.
+4. Assign `ecsTaskExecutionRole` to both **Task Role** and **Task Execution Role**. The first one is enable SSH access. The second one is for the container to access other AWS services. 
+5. Enable `ECS Exec` for your ECS task and services. This step is very tricky, b/c by CLI you can **ONLY update a service to enable execute command. and you may need to restart tasks to enable execute command for a task**. So this method has to use with **service** but NOT tasks.  
+```sh
+#Enable ECS Exec for a service
+aws ecs update-service  --cluster dynamo-cluster-fargate  --service  service-name-hashvalues    --enable-execute-command
+## You should see , or you can see the status of the service.
+aws ecs describe-services  --cluster dynamo-cluster-fargate  --service service-name-hashvalues
+## expected to see following
+## "enableExecuteCommand": true
+## Check ECS Exec for a task
+aws ecs describe-tasks --cluster dynamo-cluster-fargate --task task-ID-or-ARN
+## If ECS Exec is not turned on, kill the task and service will restart it, then it should be turned on (service is already turned on)
+```
+6. SSH into the container
+```sh
+aws ecs execute-command --cluster dynamo-cluster-fargate  --task task-ID-or-ARN  --container container-name  --interactive --command "/bin/bash"
+``` 
