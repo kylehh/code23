@@ -13,11 +13,11 @@ Summary from this [post](https://vineetcic.medium.com/the-differences-between-do
 ## 1 OCR vs CRI 
 - OCI (Open Container Initiative): a set of standards for containers, describing the image format, runtime, and distribution.
 - CRI (Container Runtime Interface) in **Kubernetes**: An API that allows you to use different container runtimes in Kubernetes.
-![Alt text](/assets/images/2024/24-06-18-container_files/overview.webp)
+![Alt text](/code23/assets/images/2024/24-06-18-container_files/overview.webp)
 
 ## 2 Lifecycle of docker
 when you run a container with docker, you’re actually running it through the **Docker daemon**, which calls **containerd**, which then uses **runc**.
-![Alt text](/assets/images/2024/24-06-18-container_files/lifecycle.webp)
+![Alt text](/code23/assets/images/2024/24-06-18-container_files/lifecycle.webp)
 - Docker daemon: dockerd
 - containerd: High-level container runtime
 - runc: Low-level container runtime. (Includes libcontainer, a GO lib for creating containers)
@@ -29,7 +29,7 @@ when you run a container with docker, you’re actually running it through the *
 - dockershim was removed completely, use containerd as successor to Docker Engine.
 
 CRI is an interface used by Kubernetes to control the different runtimes that create and manage containers.
-![Alt text](/assets/images/2024/24-06-18-container_files/k8s.webp)
+![Alt text](/code23/assets/images/2024/24-06-18-container_files/k8s.webp)
 
 Red Hat’s OpenShift uses CRI-O
 

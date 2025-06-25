@@ -12,7 +12,7 @@ This is a typical example of we can enrich RAG with more advanved methods, and i
 
 A cookbook implementatin is [here](https://github.com/anyscale/endpoint-cookbook/blob/main/App_RAG_Fusion.ipynb).
 
-![Alt text](/assets/images/2023/23-10-25-LLM-RAG-Fusion_files/RAGFusion.png)
+![Alt text](/code23/assets/images/2023/23-10-25-LLM-RAG-Fusion_files/RAGFusion.png)
 
 Three steps in RAG Fusion
 

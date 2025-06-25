@@ -14,7 +14,7 @@ I was debugging a sliding window attention bug and it was fixed by this [PR](htt
 Sliding window attention is from [Longformer paper](https://arxiv.org/pdf/2004.05150) is limiting the **receptive field** of attention layer, so each token is only getting attentions from previous w tokens.
 It can also integrate w dilate concept similar to CNN.
 And also combined w full/global attention for some special tokens, and local attention for the rest of the token.
-![Alt text](/assets/images/2025/25-04-27-sliding_files/slide.png)
+![Alt text](/code23/assets/images/2025/25-04-27-sliding_files/slide.png)
 
 ## 2 Interleaved Sliding window
 I can't find the original paper for this idea but the concept is that one layer for full attention and one other layer for sliding window. 

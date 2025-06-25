@@ -36,7 +36,7 @@ print(decode(encode("hii there")))
 # 2 Train and Target data
 `block_size` is the length of context window
 and each `block_size+1` window can generate `block_size` pairs of inputs and targets
-![Alt text](/assets/images/2024/24-04-06-Karpathy-GPT_files/inputtarget.png) 
+![Alt text](/code23/assets/images/2024/24-04-06-Karpathy-GPT_files/inputtarget.png) 
 
 Here is how we generate the new tokens and concatenates to the origin ones.   
 $B$: Batch size  
@@ -124,7 +124,7 @@ xbow2 = wei @ x # ((B,)T, T) @ (B, T, C) ----> (B, T, C)
 torch.allclose(xbow, xbow2) # True
 ```
 Softmax is a type of normalization, so we can replace 0 with -inf, which will be mapped to 0 by softmax.
-![Alt text](/assets/images/2024/24-04-06-Karpathy-GPT_files/softmax.png)  
+![Alt text](/code23/assets/images/2024/24-04-06-Karpathy-GPT_files/softmax.png)  
 ```python
 tril = torch.tril(torch.ones(T, T))
 wei = torch.zeros((T,T))

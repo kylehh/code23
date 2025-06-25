@@ -98,6 +98,6 @@ Now you can rerun the command in step 4 to generate images with INT8 UNet
 
 Output will be saved in `output` folder.  
 FP16
-![Alt text](/assets/images/2025/25-01-23-Diffusion-Quantize_files/fp16.png)
+![Alt text](/code23/assets/images/2025/25-01-23-Diffusion-Quantize_files/fp16.png)
 INT8:
-![Alt text](/assets/images/2025/25-01-23-Diffusion-Quantize_files/int8.png)
+![Alt text](/code23/assets/images/2025/25-01-23-Diffusion-Quantize_files/int8.png)

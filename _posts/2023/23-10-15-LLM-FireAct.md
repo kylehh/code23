@@ -16,7 +16,7 @@ It is short for **Fi**netune and **reAct**. It's paper from the reAct author, ta
 This would be very helpful to help Llama model works with agents. So far my tests with LangChain's agent never worked with Llama mainly due to the quality of the output, not even mention the missing **function** feature. 
 
 The paper's idea is to use GPT-4 to create QA trajectories, based on CoT, ReAct, or Relfexion, and format them as training datasets.   
-![Alt text](/assets/images/2023/23-10-15-LLM-FireAct_files/fireact.png)  
+![Alt text](/code23/assets/images/2023/23-10-15-LLM-FireAct_files/fireact.png)  
 
 There are multiple LLM crowdsource datasets are used in this paper, and here they are:   
 

@@ -23,9 +23,9 @@ $pf$ = prefix, $K$ = 5
 Do following two steps in parallel. 
 1. Run draft model for K steps to generate K tokens (generate K distributions over the vacab p(x) and sample out of them) 
 2. Run target model once to get distributions of K+1 tokens (q(x) only, No sampling here)
-![Alt text](/assets/images/2024/24-05-08-Speculative_files/drafttarget.png) 
+![Alt text](/code23/assets/images/2024/24-05-08-Speculative_files/drafttarget.png) 
 The key algorithm is **reject sampling**, accept or reject tokens based on values of p/q
-![Alt text](/assets/images/2024/24-05-08-Speculative_files/rejectsampling.png)
+![Alt text](/code23/assets/images/2024/24-05-08-Speculative_files/rejectsampling.png)
 For the first rejected token $i$, we will reject all the token after it and generate token $i$ since we already have $q(i)$, why waste it?
 
 The tricky part is that we are not directly sampling from it, but sample the final token from $(q(x)-p(x))_+$ (The positive part of q(x) minus p(x), the red marked area in the pic below). Why doing it
@@ -34,9 +34,9 @@ The tricky part is that we are not directly sampling from it, but sample the fin
 3. With red marked area, we covers the whole q distribution. 
 
 So doing so can make sure our token distribution is lossless, exactly $q(x)$ 
-![Alt text](/assets/images/2024/24-05-08-Speculative_files/finaltoken.png)  
+![Alt text](/code23/assets/images/2024/24-05-08-Speculative_files/finaltoken.png)  
 This step is important to make sure we generate at least 1 token (When first token is rejected). The worse case is to generate 1 token in each pass, and the best case is to generate K+1 tokens, so speedup is garanteened. (The last token would sample from $q(x)$)
-![Alt text](/assets/images/2024/24-05-08-Speculative_files/speedup.png)  
+![Alt text](/code23/assets/images/2024/24-05-08-Speculative_files/speedup.png)  
 
 ## 2 Medusa
 Tianlei Li from Princeton/Together.ai and Yuhong Li from UIUC published [Medusa](https://arxiv.org/pdf/2401.10774) paper in early 2024. 

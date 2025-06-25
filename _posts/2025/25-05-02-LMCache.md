@@ -24,11 +24,11 @@ The serving [script](https://github.com/vllm-project/vllm/blob/main/examples/onl
 
 ## 2 LMCache PD in vLLM v1
 LMCache integrates with vLLM v1 and supports NIXL for ultra-fast KV cache transfer. Details in this [blog](https://blog.lmcache.ai/2025-04-11-lmcache-vllmv1-nixl/) and benchmark in this [blog](https://blog.lmcache.ai/2025-04-29-pdbench/)  
-![Alt text](/assets/images/2025/25-05-02-LMCache_files/vllm.png)
+![Alt text](/code23/assets/images/2025/25-05-02-LMCache_files/vllm.png)
 Key takeaways:  
 1. LMCache batches the KV blocks into a single large buffe
 2. Smaller blocker (default 16 tokens), leads to many tiny transfers and underutilizing network
 3. Larger blockers, reduces prefix caching hit rates, and fragment GPU mem (opposite of paged attention philosophy)
 4. LMCache decoupled buffering step solves this issue. 
-![Alt text](/assets/images/2025/25-05-02-LMCache_files/buffer.png)
+![Alt text](/code23/assets/images/2025/25-05-02-LMCache_files/buffer.png)
 Detailed steps are listed in LMCache [doc](https://docs.lmcache.ai/getting_started/quickstart/disaggregated_prefill.html)

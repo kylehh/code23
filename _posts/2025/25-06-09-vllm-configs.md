@@ -48,7 +48,7 @@ class ModelConfig:
       # if found, return 
       # otherwise return config so that text_config == config is True
 ```
-![Alt text](/assets/images/2025/25-06-09-vllm-configs_files/configs.png)
+![Alt text](/code23/assets/images/2025/25-06-09-vllm-configs_files/configs.png)
 
 ## 2 Preprocessor_config
 `preprocessor_config` is read by `AutoImageProcessor` and it's also implemented in the same file in vLLM `vllm.transformers_utils
@@ -85,7 +85,7 @@ MultiModel Registration decorator
     - `class BaseInternVLProcessor(ABC)`
     - This is used at `InternVLProcessingInfo.get_hf_processor`
 
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/bf16.png)
-
 ![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/bf16.png)
+
+![Alt text](/code23/code23/assets/images/2025/25-04-21-4bitquant_files/bf16.png)
 

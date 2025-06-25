@@ -12,7 +12,7 @@ It's based on Bengio's paper on MLP, [A Neural Probabilistic Language Model](htt
 
 $C$ is embedding matrix 17,000 x emb_size. Last layer has 17,000 neurons, for 17,000 words. and the middle layer's neuron number is h-para, say 100. If we look back 3 words (n=3), the first layer $W$ has size (3*emb_size, 100)
 (Ignore the green dotted lines)
-![Alt text](/assets/images/2024/24-04-18-Karpathy-mlp_files/mlp.png) 
+![Alt text](/code23/assets/images/2024/24-04-18-Karpathy-mlp_files/mlp.png) 
 
 ## 1 Data Preparation
 - Context window 
@@ -104,9 +104,9 @@ $C$ is embedding matrix 17,000 x emb_size. Last layer has 17,000 neurons, for 17
   plt.plot(lri, lossi)
   ```
   So we can see `0.1` is the good lr.
-  ![Alt text](/assets/images/2024/24-04-18-Karpathy-mlp_files/lr.png)  
+  ![Alt text](/code23/assets/images/2024/24-04-18-Karpathy-mlp_files/lr.png)  
   or see from the exponent figure as below ( `lri.append(lre[i])`), we can see `-1` exponent is a good choice.
-  ![Alt text](/assets/images/2024/24-04-18-Karpathy-mlp_files/lre.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-18-Karpathy-mlp_files/lre.png) 
   
 - Train/Vali/Test split  
   80% - 10% - 10%
@@ -124,7 +124,7 @@ $C$ is embedding matrix 17,000 x emb_size. Last layer has 17,000 neurons, for 17
 - Embedding visualization
   tensor.data: return the tensor
   tensor.item: return the scalar
-  ![Alt text](/assets/images/2024/24-04-18-Karpathy-mlp_files/embed.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-18-Karpathy-mlp_files/embed.png) 
 
 ## 4 Inference
 ```python

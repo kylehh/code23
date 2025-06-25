@@ -31,17 +31,17 @@ I found this simple [tutorial](https://www.datacamp.com/tutorial/open-ai-functio
 ## 1. Function is NOT an agent
 The function is NOT an agent, which means it won't execute the code and actually do the function call. Instead, the LLM will select a function and output it's arguments. It's this information is correct, you can execute the function call in a proper runtime environment, this is EXACTLY what Open Interperter does in the backend.   
 The following example shows these details in `choice` and please notice the `finish_reason` is `function_call`, before it was always `stop`.  
-![Alt text](/assets/images/2023/23-09-29-LLM-Functions_files/output_arguments.png)
+![Alt text](/code23/assets/images/2023/23-09-29-LLM-Functions_files/output_arguments.png)
 
 ## 2. Define the Function
 How would LLM know which function to call and whats its argument? This knowledge is passed to LLM by defining the `function` parameter. 
 Here is one example of defining the function in JSON format.  
-![Alt text](/assets/images/2023/23-09-29-LLM-Functions_files/define_function.png)
+![Alt text](/code23/assets/images/2023/23-09-29-LLM-Functions_files/define_function.png)
 The interesting part here, is that the `description` is the most important part, so the LLM know what information to extract from the prompt. You can provide as much information as possible here.
 
 ## 3. Function execution. 
 Eventually you still want to execute the function, right? Since you also know the function name (hopefully it's one of the functino you defined) and argument, just call the function (sample code below)
-![Alt text](/assets/images/2023/23-09-29-LLM-Functions_files/function_execution.png)  
+![Alt text](/code23/assets/images/2023/23-09-29-LLM-Functions_files/function_execution.png)  
 
 
 Overall, I would say Function feature is one key step to Agent execution. Nice to learn about it. In order to use it in OSS models, fine-tuning are needed to it.

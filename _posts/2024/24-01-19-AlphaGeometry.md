@@ -17,8 +17,8 @@ First blog in the new year, a amazing results from Deep Mind team, AlphaGeometry
 2. Alegra problems will be tackled next I believe. Due to the synthetic data generation methods used in AlphaGeometry, I believe it can be applied to algebra as well. Number theories and combinatorics will be harder.
 
 3. Fig 5 in this paper is clearly wrong. ABC should be a acute-angled triangle. I searched IMO problems and ABC was drawn correctly. Well, maybe there is no figure in original test sets, but the [solutions](https://web.evanchen.cc/exams/IMO-2004-notes.pdf) from Even Chen draw it correctly. 
-![Alt text](/assets/images/2024/24-01-19-AlphaGeometry_files/nature.png)
-![Alt text](/assets/images/2024/24-01-19-AlphaGeometry_files/evenchen.png)
+![Alt text](/code23/assets/images/2024/24-01-19-AlphaGeometry_files/nature.png)
+![Alt text](/code23/assets/images/2024/24-01-19-AlphaGeometry_files/evenchen.png)
 
 4. So the AlphaGeometry found out that O is middle point of BC is unnecessary premise, is the acute angle premise also unnecessary? That's sth beyond my understanding now, need to dig into the proof to find out. 
 

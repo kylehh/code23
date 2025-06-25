@@ -19,44 +19,44 @@ One year later, I decided to review them and record it down here. I also found c
 5. Steins' [explanations](https://codoraven.com/blog/ai/diffusion-model-clearly-explained/)
 
 Let's start w Platot's [allegory of the cave](https://en.wikipedia.org/wiki/Allegory_of_the_cave), a very unique analogy from Umar's video. So we human are just chained in a cave?
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/plato.png) 
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/plato.png) 
 
 ## 0 Reparameterization trick
 First thing to demystify is re-parameterization trick. Frankly speaking I never understand the figure which is used everywhere to explain the trick. 
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/reparam.png) 
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/reparam.png) 
 But mathmatically, it's just 
 $$\mathit{if}\ \ z \sim \mathcal{N}(\mu, \sigma^2)\ \mathit{then}\\ z=\mu+ \sigma\epsilon\ \ \ \mathit{where}\ \epsilon \sim \mathcal{N}(0,1)$$
 
 ## 1 Forward Process
 Adding noise in $T$ steps and step sizes are controlled by a **vairance schedule** $\{\beta_t\in(0,1)\}^T_{t=1}$
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/forward.jpg) 
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/forward.jpg) 
 Based on the re-parameterization trick, it gives 
 $$x_t=\sqrt{1-\beta_t}\ x_{t-1}+\sqrt{\beta_t}\ \epsilon_{t-1} \ \ \ (1)$$
 A closed-form formular can be derived as 
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/closedform.jpg)  
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/closedform.jpg)  
 All basic statistical calculations, finally gives you the formulat that you can **directly** sample $x_t$ **at any time step**
 $$x_t=\sqrt{\bar\alpha_t}\ x_0+\sqrt{1-\bar\alpha_t}\ \epsilon\ \ \ (2)$$
 Now you can see where we get the formular in the training algorithm
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/trainalgo.jpg)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/trainalgo.jpg)
 
 ## 2 Reverse Process
 The direct reverse process is intractable, so we train a neural network $p_{\theta}(x_{t-1}\mid x_t)$ to approximate the process $q(x_{t-1}\mid{x_t})$. 
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/reverse.jpg)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/reverse.jpg)
 
 For simplicity, we assume multivariate Gaussian is a product of independent gaussians with identical variance, and futhur set **these variances to be equivalent to our forward process variance schedule**.$$\Sigma_{\theta}(x_t,t) = \sigma_t^2\mathrm{I} \\where\ \sigma_t^2=\beta_t$$  
 
 To get the mean, we can derive from the $q(x_{t-1}\mid x_t)$
 All these steps below are based on formular 1 and 2 to write out the explicity form of normal distribution. I once gave them to my daughter and she worked it out 
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/mean1.png)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/mean1.png)
 Following the defination of standard Gaussian density function, the mean and variance can be parameterized as follows
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/mean2.png)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/mean2.png)
 
 These formulas are used in the sampling algorithm.
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/samplealgo.jpg)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/samplealgo.jpg)
 
 ## 3 Training 
 The network is used to predict noise at time step $t$, with input of the noised image $x_t$ and $t$. 
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/traindiag.jpg)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/traindiag.jpg)
 
 The lose function will be explained in my next note, which is the most challenging part of this algorithm.
 ```python
@@ -79,7 +79,7 @@ loss = nn.functional.mse_loss(
 ```
 ## 4 Sampling
 With the model trained, following steps below we can denoise the image step by step from a random noise.
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/samplediag.jpg)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/samplediag.jpg)
 
 Here are the steps in code.
 ```python
@@ -94,8 +94,8 @@ x = pre_scale * (x - e_scale * e_hat) + post_sigma
 
 ## 5 Stable Diffusion
 The vallina Diffusion is adding noise the the original images. “Latent Diffusion Model” (LDM). As its name points out, the Diffusion process happens in the latent space, which is faster.
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/stablediffusion.jpg)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/stablediffusion.jpg)
 Text embedding can be added to have the image generation conditioned on the title. So the high level algo is showed below with $E$ as the encoder for the image.
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/ldmalgo.jpg)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/ldmalgo.jpg)
 The sampling is conditioned as well, with a decode at the end. 
-![Alt text](/assets/images/2024/24-05-22-Diffusion_files/overview.jpg)
+![Alt text](/code23/assets/images/2024/24-05-22-Diffusion_files/overview.jpg)

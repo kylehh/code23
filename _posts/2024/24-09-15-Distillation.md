@@ -19,10 +19,10 @@ $$q_i=\frac{exp(z_i/T)}{\Sigma_jexp(z_j/T)}$$
 
 The larger the $T$, the smaller are the differences
 
-![Alt text](/assets/images/2024/24-09-15-Distillation_files/softmaxt.png)
+![Alt text](/code23/assets/images/2024/24-09-15-Distillation_files/softmaxt.png)
 ## 2 Soft target and Hard target
 The teacher's logit are called **soft target**, and the true labels are **hard target**. Get totally lose by add two lose.
-![Alt text](/assets/images/2024/24-09-15-Distillation_files/softhard.png)
+![Alt text](/code23/assets/images/2024/24-09-15-Distillation_files/softhard.png)
 
 ## 3 Result
-![Alt text](/assets/images/2024/24-09-15-Distillation_files/result.png)
+![Alt text](/code23/assets/images/2024/24-09-15-Distillation_files/result.png)

@@ -9,17 +9,17 @@ tags:
 ---
 
 Yao Shunyu, the original author of ReAct paper, talk about LLM and Agents.
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/overview.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/overview.png)
 
 ## 1, ReAct
 Reasoning Only: like CoT  
 Acting Only: like WebGPT (search only)  
 Need to combine both achive human-like results
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/react_overview.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/react_overview.png)
 
 Comparing action space with RL, RL is external only but ReAct is acting with both internal and external.  
 How can we achieve long-term mem? check next point!
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/react_summary.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/react_summary.png)
 
 
 
@@ -31,30 +31,30 @@ Noah Shinn, a undergraduate from northeastern is the first author of this paper.
 
 So this "Verbal" RL would be called Reflexion.
 How can we achieve long-term mem? check next point!
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/reflex_verbalRL.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/reflex_verbalRL.png)
 
 Here is the summary of Reflexion.  
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/reflex_summary.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/reflex_summary.png)
 
 ## 3 Tree of Thoughts
 Shunyu's paper again. Why is it hard for computer to solve 24?  
 1, Once you get it wrong at one step, it's impossible to get the results.   
 2, How to evaluate early choices. Like if you start with number 5, is it good or bad?
 So the planning is very important for soving this problem.  
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/tot_overview.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/tot_overview.png)
 Bandit of outputs: output all steps to generate 24.  
 Tree of tokens: list all possible tokens.  
 Thought: tradeoff between these two
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/tot_thoughts.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/tot_thoughts.png)
 Generate thought is the key, either by sampling or proposal. 
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/tot_generationA.png)
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/tot_generationB.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/tot_generationA.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/tot_generationB.png)
 Evaluation
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/tot_evaluationA.png)
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/tot_evaluationB.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/tot_evaluationA.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/tot_evaluationB.png)
 Search can be done by BFS or DFS
 
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/tot_summary.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/tot_summary.png)
 
 Here is a simple promping solution with ToT, and here is the prompt
 ```
@@ -65,5 +65,5 @@ Then all experts will go on to the next step, etc.
 If any expert realises they're wrong at any point then they leave.
 The question is...
 ```  
-![Alt text](/assets/images/2023/23-09-19-LLM2Agents_files/tot_prompt.png)
+![Alt text](/code23/assets/images/2023/23-09-19-LLM2Agents_files/tot_prompt.png)
 

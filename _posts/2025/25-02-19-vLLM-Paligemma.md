@@ -39,7 +39,7 @@ The pytest is under `vllm/tests/models/multimodal/processing/test_common.py` pat
 
 ## 2 HuggingFace Processor
 The logic is that it will call HF processor for the first time through this stack
-![Alt text](/assets/images/2025/25-02-19-vLLM-Paligemma_files/hf.png)
+![Alt text](/code23/assets/images/2025/25-02-19-vLLM-Paligemma_files/hf.png)
 
 ```
     def _cached_apply_hf_processor(
@@ -70,7 +70,7 @@ The logic is that it will call HF processor for the first time through this stac
 
 ## 3 Cached Processor
 For the second time, a cached processor will be called
-![Alt text](/assets/images/2025/25-02-19-vLLM-Paligemma_files/cache.png)
+![Alt text](/code23/assets/images/2025/25-02-19-vLLM-Paligemma_files/cache.png)
 ```
     def _cached_apply_hf_processor(...)
       ...

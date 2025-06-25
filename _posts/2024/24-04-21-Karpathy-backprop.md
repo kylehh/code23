@@ -10,7 +10,7 @@ tags:
 
 Andrej explain his own [blog](https://karpathy.medium.com/yes-you-should-understand-backprop-e2f06eab496b) in this lecture.
   
-![Alt text](/assets/images/2024/24-04-21-Karpathy-backprop_files/ninja.png) 
+![Alt text](/code23/assets/images/2024/24-04-21-Karpathy-backprop_files/ninja.png) 
 
 ## 1 Gradients
   - Basic operatinos w Chain Rule
@@ -65,15 +65,15 @@ Andrej explain his own [blog](https://karpathy.medium.com/yes-you-should-underst
   - Max operra    
     - `max` returns both `value` and `indices` 
     - use `F.one_shot` to generate one shot vectors for the correct max positions
-    ![Alt text](/assets/images/2024/24-04-21-Karpathy-backprop_files/onehot.png) 
+    ![Alt text](/code23/assets/images/2024/24-04-21-Karpathy-backprop_files/onehot.png) 
     ```python
     # F.one_shot().shape == [32, 27]
     #logit_maxes = logits.max(1, keepdim=True).values
     dlogits += F.one_hot(logits.max(1).indices, num_classes=logits.shape[1]) * dlogit_maxes
     ```  
   - Matrix multiplication
-    ![Alt text](/assets/images/2024/24-04-21-Karpathy-backprop_files/matrix.png)  
-    ![Alt text](/assets/images/2024/24-04-21-Karpathy-backprop_files/matrixmul.png) 
+    ![Alt text](/code23/assets/images/2024/24-04-21-Karpathy-backprop_files/matrix.png)  
+    ![Alt text](/code23/assets/images/2024/24-04-21-Karpathy-backprop_files/matrixmul.png) 
     The trick here is the see how matrix dim can match.
     ```python
     # logits.shape == [32, 27]
@@ -126,7 +126,7 @@ Andrej explain his own [blog](https://karpathy.medium.com/yes-you-should-underst
     ```
 
 ## 2 Simple solution for cross_entropy 
-  ![Alt text](/assets/images/2024/24-04-21-Karpathy-backprop_files/simplece.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-21-Karpathy-backprop_files/simplece.png) 
   ```python
   #loss = F.cross_entropy(logits, Yb)
   dlogits = F.softmax(logits, 1)
@@ -135,8 +135,8 @@ Andrej explain his own [blog](https://karpathy.medium.com/yes-you-should-underst
   ```
 ## 3 Simple solution for Batch Norm
   Pretty tricky math here
-  ![Alt text](/assets/images/2024/24-04-21-Karpathy-backprop_files/simplebn.png) 
-  ![Alt text](/assets/images/2024/24-04-21-Karpathy-backprop_files/simplebn2.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-21-Karpathy-backprop_files/simplebn.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-21-Karpathy-backprop_files/simplebn2.png) 
   ```python
   #hpreact = bngain * (hprebn - hprebn.mean(0, keepdim=True)) / torch.sqrt(hprebn.var(0, keepdim=True, unbiased=True) + 1e-5) + bnbias
 

@@ -65,7 +65,7 @@ tags:
   ```  
 - One hot encoding  
   Convert `one_hot` to `float()`!  
-  ![Alt text](/assets/images/2024/24-04-17-Karpathy-makemore_files/oneshot.png)
+  ![Alt text](/code23/assets/images/2024/24-04-17-Karpathy-makemore_files/oneshot.png)
 
 - logits and softmax
   ```python

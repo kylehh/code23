@@ -13,7 +13,7 @@ Maarten gives another greate visual guide on [quantization](https://www.maarteng
 ## 1 BF16
 BF16 actually has the same dynamic range as FP32, due to using same 8 bits for Exponent. (Leaving 7 for significand/mantissa, vs 23 for FP32)   
 FP16 is 5bit and 10 bits. 
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/bf16.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/bf16.png)
 
 ## 2 Calibration
 Quantization of the **weights** is performed using either **symmetric or asymmetric** quantization.
@@ -33,33 +33,33 @@ To find those values, a **calibration dataset** is used and given to the model t
 2. we quantize and then dequantize the weight of the first row in our weight matrix.This process allows us to calculate the quantization error (_q) 
 3. we **redistribute** this weighted quantization error over the other weights in the row. This allows for maintaining the overall function and output of the network.
 Here are the pseudo-code from [youtube](https://www.youtube.com/watch?v=mii-xFaPCrA)
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/gptq.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/gptq.png)
 Pay attention that we are leaving **emergent features** out for quantization!
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/emergent.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/emergent.png)
 
 ## 4 GGUF
 - GGUF(GPT-Generated Unified Format) a file format specifically designed for storing and deploying LLMs, especially those that are quantized. 
 - Huggingface supports all file formats, but has built-in features for GGUF format, a binary format that is optimized for quick loading and saving of models, making it highly efficient for inference purposes.  
 - allows users to use the **CPU** to run an LLM but also offload some of its layers to the GPU for a speed up.
 - There are different implementations of the GGUF but the principle is divide weights of a layer into **super** blocks containing **sub** blocks.
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/supersub.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/supersub.png)
 - The scale factor is calculate using the information from **sub** block it's quantized using information from the **super** block
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/gguf.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/gguf.png)
 
 
 ## 5 1 Bit LLM 
 No joking, it's just 1 and -1 for the weight as 1 Bit LLM. It applies to all linear layers, namely **BitLinear**, and apply to INT8 activations.
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/1bit.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/1bit.png)
 The weights are actually stored in INT8, and changed to 1 or -1 using *signum function*
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/1bitweight.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/1bitweight.png)
 and activations are quantize to INT8 with traditional *absmax quantization*
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/1bitact.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/1bitact.png)
 The tracked $\alpha$ nad $\beta$ are used to dequantize results back to FP16
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/1bitdeq.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/1bitdeq.png)
 
 ## 6 All LLM are 1.58 Bits
 [BitNet 1.58 Bit](https://arxiv.org/pdf/2402.17764) is adding status 0, making it ternary. The quantization is called *absmean function*
-![Alt text](/assets/images/2025/25-04-21-4bitquant_files/1.58bit.png)
+![Alt text](/code23/assets/images/2025/25-04-21-4bitquant_files/1.58bit.png)
 
 
 

@@ -12,7 +12,7 @@ Summary from this MoE [link](https://cameronrwolfe.substack.com/p/conditional-co
 
 ## 1 MoE
 In the context of LLMs, MoEs make a simple modification to this architecture: we replace the feed-forward sub-layer with an MoE layer!
-![Alt text](/assets/images/2024/24-03-22-MoE-Code_files/moe.png)
+![Alt text](/code23/assets/images/2024/24-03-22-MoE-Code_files/moe.png)
 
 Two primary components:
 
@@ -81,7 +81,7 @@ for i in range(nlayers):
     output = weight_matrix @ output
 ```
 The layer-norm is modified with an affine transformation as below
-![Alt text](/assets/images/2024/24-03-22-MoE-Code_files/affine.png)
+![Alt text](/code23/assets/images/2024/24-03-22-MoE-Code_files/affine.png)
 THe point-wise Feed-Forward network is defined as below
 ```python
 def forward(self, x):
@@ -108,7 +108,7 @@ def forward(self, x):
   return x
 ```
 Now we complete following figure for decoder block.
-![Alt text](/assets/images/2024/24-03-22-MoE-Code_files/decoderblock.png)
+![Alt text](/code23/assets/images/2024/24-03-22-MoE-Code_files/decoderblock.png)
 
 ## 5 Adding Embedding layers
 - The **token embedding** layer is just a mtrix with size [V, d], where V is the size of the tokenizers' vocabulary. We can simply lookup the token's embedding from the matrix. It's impleted by Torch simple lookup table API `nn.Embedding(num_embeddings, embedding_dim)`
@@ -154,4 +154,4 @@ return logits, loss
 ```
 
 Here is the whole picture now
-![Alt text](/assets/images/2024/24-03-22-MoE-Code_files/head.png)
+![Alt text](/code23/assets/images/2024/24-03-22-MoE-Code_files/head.png)

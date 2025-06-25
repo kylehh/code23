@@ -10,7 +10,7 @@ tags:
 
 [WaveNet](https://arxiv.org/pdf/1609.03499) published by Google in 2016, a wave generating DNN with dilated casual convolutions.
   
-![Alt text](/assets/images/2024/24-04-25-Karpathy-wavenet_files/dilate.png)   
+![Alt text](/code23/assets/images/2024/24-04-25-Karpathy-wavenet_files/dilate.png)   
 
 ## 1 Torchify the code
 
@@ -42,7 +42,7 @@ tags:
       xvar = x.var(dim, keepdim=True) # batch variance
     ```
 - Torch batchnorm1d expected input to be (B,C) or (B, C, L), but code above expect (B, C), or (B, L, C)
-  ![Alt text](/assets/images/2024/24-04-25-Karpathy-wavenet_files/batchnorm1d.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-25-Karpathy-wavenet_files/batchnorm1d.png) 
 - Adding Batch dim
   ```python
   Xtr[7].shape == [8]

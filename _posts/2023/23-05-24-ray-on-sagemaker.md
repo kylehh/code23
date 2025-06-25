@@ -19,7 +19,7 @@ Amazon SageMaker supports multiple machine learning environments, including Amaz
 
 Let's follow this [instruction](https://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-create-ws.html) to create a ml.m5.4xlarge Notebook instance in Sagemaker, and click on **Open JupyterLab**
 
-![image.png](/assets/images/2023/23-05-24-ray-on-sagemaker_files/sagemaker-notebook-instance.png)
+![image.png](/code23/assets/images/2023/23-05-24-ray-on-sagemaker_files/sagemaker-notebook-instance.png)
 
 
 We'll begin by utilizing the example provided in SageMaker's [official](https://github.com/aws/amazon-sagemaker-examples/blob/main/frameworks/pytorch/get_started_mnist_train.ipynb) repository. Once you've cloned it to your notebook instance, initiate it using the `conda_pytorch_p39` kernel.
@@ -92,11 +92,11 @@ if __name__ == "__main__":
 Now, we can return to the Jupyter notebook and commence the training by using the `fit()` method from the estimator.
 
 Here is the output when using **'local'** as the instance type, where the training runs on the same instance as the Jupyter notebook.
-![image.png](/assets/images/2023/23-05-24-ray-on-sagemaker_files/sagemaker-train-local.png)
+![image.png](/code23/assets/images/2023/23-05-24-ray-on-sagemaker_files/sagemaker-train-local.png)
 
 Alternatively, you can specify an instance type such as **ml.m5.2xlarge** to submit the job and execute it in SageMaker training. This allows you to monitor the progress of the training job within the SageMaker environment.
 
-![image.png](/assets/images/2023/23-05-24-ray-on-sagemaker_files/sagemaker-train-console.png)
+![image.png](/code23/assets/images/2023/23-05-24-ray-on-sagemaker_files/sagemaker-train-console.png)
 
 ## Parallel Hyperparameter tuning with Ray Tune
 
@@ -156,7 +156,7 @@ if __name__ == "__main__":
 ```
 
 Similar to Ray Train, we initiate the tuning process by using `est.fit()`. You can observe that all 16 CPUs on the **ml.m5.4xlarge** instance are utilized to execute 16 trials in parallel, which can be monitored through CloudWatch.
-![image.png](/assets/images/2023/23-05-24-ray-on-sagemaker_files/tune-cloudwatch.png)
+![image.png](/code23/assets/images/2023/23-05-24-ray-on-sagemaker_files/tune-cloudwatch.png)
 
 ## Submit Anyscale jobs from Amazon SageMaker
 Using Ray on Amazon SageMaker is truly remarkable, as it allows users to experience Ray for efficient distributed computing. However, it does come with a limitation of being restricted to a single instance, limiting its potential scalability. Fortunately, with the introduction of Anyscale, we can now fully unleash the power of Ray by running it across multiple cluster instances.
@@ -170,7 +170,7 @@ Here are the steps:
 ```anyscale job submit -f sagemeker_job.yaml```  
 
 Now you can monitor the job in Anyscale console, which provides a comprehensive view of tis progress and status
-![image.png](/assets/images/2023/23-05-24-ray-on-sagemaker_files/anyscale-console.png)
+![image.png](/code23/assets/images/2023/23-05-24-ray-on-sagemaker_files/anyscale-console.png)
 
 ## Summary
 By utlizating SageMaker's managed infrastructure, you gain access to Ray's parallel processing, fault torlerane, and auto scaling capabilities. This combination offers numerous advantages, such as enhanced scalability, increased GPU utilization rate, and improved productivity for your ML workflows, resulting in cost savings. 

@@ -25,20 +25,20 @@ One formula explained all
 $Y=(Xdiag(s)^{-1})(diag(s)W)=\hat{X}\hat{W}$
 
 The key challenge is that activation has larger dynamic range and hard to quantize.
-![Alt text](/assets/images/2025/25-03-18-Quantization_files/outliners.png)
+![Alt text](/code23/assets/images/2025/25-03-18-Quantization_files/outliners.png)
 So instead of per-tensor quantization, we can consider per-token and per-channel quantization. 
-![Alt text](/assets/images/2025/25-03-18-Quantization_files/pertoken.png)
+![Alt text](/code23/assets/images/2025/25-03-18-Quantization_files/pertoken.png)
 The outliners are mainly concentrated in certain **channels**. So we can shift them into weights.  
-![Alt text](/assets/images/2025/25-03-18-Quantization_files/channels.png)
+![Alt text](/code23/assets/images/2025/25-03-18-Quantization_files/channels.png)
 
 ## 2 AWQ
 This is 4-bit quantization also from Han's group, and here are Han's [talk](https://www.youtube.com/watch?v=3dYLj9vjfA0), [zhihu(really good explanations)](https://zhuanlan.zhihu.com/p/697761176), and [paper](https://arxiv.org/pdf/2306.00978)
 
 The goal is to get weight only quantization for single-batch LLM performance. (W8A8 is only good for batch serving and not enough for single-query LLM inference)
-![Alt text](/assets/images/2025/25-03-18-Quantization_files/w4a16.png)
+![Alt text](/code23/assets/images/2025/25-03-18-Quantization_files/w4a16.png)
 
 1. Only 1% of salient weight is important for the results. and the paper found out choosing the salient weight based on *weight* is similar to *random* choosing. So **Activation-aware** selection method is used. 
-![Alt text](/assets/images/2025/25-03-18-Quantization_files/salientweight.png)
+![Alt text](/code23/assets/images/2025/25-03-18-Quantization_files/salientweight.png)
 
 2. The paper **noticed** that scale up the salient weight and reduce the quantization error, which is a key contribution.
 Here is the induction:
@@ -49,9 +49,9 @@ Q(w*s)x/s=\Delta^\prime*Round(\frac{w*s}{\Delta^\prime})*x/s \\
 $$
 
 Based on **empirical** findings, the error is propotional to $\frac{1}{s}$
-![Alt text](/assets/images/2025/25-03-18-Quantization_files/empirical.png)
+![Alt text](/code23/assets/images/2025/25-03-18-Quantization_files/empirical.png)
 and a test shows s=2 gives the best result while larger s would increase non-salient weight error
-![Alt text](/assets/images/2025/25-03-18-Quantization_files/s2.png) 
+![Alt text](/code23/assets/images/2025/25-03-18-Quantization_files/s2.png) 
 
 3. The calculation of the scaling factor can NOT use SGD due to **round** functino is not differentiable. 
 A grid search is used here for a simplied factor $\alpha$
@@ -76,6 +76,6 @@ $s = \frac{s}{\sqrt{max(s)min(s)}}$
 It's also shows as `INT3_group128` which means 128 channels shares a same scaling factor
 
 So here is the summary of the process
-![Alt text](/assets/images/2025/25-03-18-Quantization_files/awq.png)
+![Alt text](/code23/assets/images/2025/25-03-18-Quantization_files/awq.png)
 
 

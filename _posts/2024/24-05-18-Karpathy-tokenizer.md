@@ -12,16 +12,16 @@ tags:
 
 ## 0 Unicode and UTF
 Issues in LLM may track back to tokenizations.
-![Alt text](/assets/images/2024/24-05-18-Karpathy-tokenizer_files/issues.png) 
+![Alt text](/code23/assets/images/2024/24-05-18-Karpathy-tokenizer_files/issues.png) 
 Mapping from character to numbers, ASCII is using 1 byte to map 128 most common used characters.
-![Alt text](/assets/images/2024/24-05-18-Karpathy-tokenizer_files/ascii.png)
+![Alt text](/code23/assets/images/2024/24-05-18-Karpathy-tokenizer_files/ascii.png)
 Resource for Unicode [here](https://www.reedbeta.com/blog/programmers-intro-to-unicode/)
  
 Unicode converts characters, or grapheme according to this [video](https://www.youtube.com/watch?v=ut74oHojxqo), to **code points**. There are over 1M code points in the codespace and only 12% are used ( so lots of rooom to grow)
-![Alt text](/assets/images/2024/24-05-18-Karpathy-tokenizer_files/unicode.png)
+![Alt text](/code23/assets/images/2024/24-05-18-Karpathy-tokenizer_files/unicode.png)
 UTF-8 manifesto [here](https://utf8everywhere.org/).  
 UTF(Unicode Tranformation Format) converts unicode to bytes. UTF-8/16 converts to 1~4 bytes and UTF-32 to 4 bytes(directly converting same as ASCII to 1 byte). UTF-8 is most widely used.
-![Alt text](/assets/images/2024/24-05-18-Karpathy-tokenizer_files/utf8.png) 
+![Alt text](/code23/assets/images/2024/24-05-18-Karpathy-tokenizer_files/utf8.png) 
 So we should use **unicode aware string** to get correct string length
 ```python
 s="👍"
@@ -197,4 +197,4 @@ Tons of parameters, NOT favoured.
 
 ## 4 SolidGoldMagikarp
 This [blog](https://www.lesswrong.com/posts/aPeJE8bSo6rAFoLqg/solidgoldmagikarp-plus-prompt-generation) explains this famous reddit username.
-![Alt text](/assets/images/2024/24-05-18-Karpathy-tokenizer_files/reddit.png) 
+![Alt text](/code23/assets/images/2024/24-05-18-Karpathy-tokenizer_files/reddit.png) 

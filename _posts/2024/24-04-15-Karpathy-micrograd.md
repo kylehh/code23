@@ -197,7 +197,7 @@ for p in n.parameters():
 - A common BUG!
 
 Item 3 here!
-![Alt text](/assets/images/2024/24-04-15-Karpathy-micrograd_files/bug.png)
+![Alt text](/code23/assets/images/2024/24-04-15-Karpathy-micrograd_files/bug.png)
 ```python
 # Pytorch zero_grad() 
 for p in n.parameters():

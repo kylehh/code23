@@ -25,13 +25,13 @@ Very insightful!
   - if input is too larger, `tanh` is saturated. ($1-t^2$ when t->1)  
 
   `hpreact` is too far away from zero, so `h` is either -1 or 1
-  ![Alt text](/assets/images/2024/24-04-19-Karpathy-batchnorm_files/tanh.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-19-Karpathy-batchnorm_files/tanh.png) 
   ```python
   # Reduce W1 and b1 to reduce hpreact
   W1 = torch.randn((n_embd * block_size, n_hidden), generator=g) *0.2
   b1 = torch.randn(n_hidden,                        generator=g) * 0.01
   ```
-  ![Alt text](/assets/images/2024/24-04-19-Karpathy-batchnorm_files/tanhfixed.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-19-Karpathy-batchnorm_files/tanhfixed.png) 
   Now the question is, how to get the 0.2 value? 
 
 - Kaiming Init  
@@ -39,7 +39,7 @@ Very insightful!
   $w *= 1/(fan\_in)^{const}$  
   This is from Kaiming's [paper](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf) and implemented in torch as `torch::nn::init::kaiming_normal_`
   with a constant depends on the activiation function. 
-  ![Alt text](/assets/images/2024/24-04-19-Karpathy-batchnorm_files/kaiming.png) 
+  ![Alt text](/code23/assets/images/2024/24-04-19-Karpathy-batchnorm_files/kaiming.png) 
   So the `W1` should be inited as below:
   ```python
   W1 = torch.randn((n_embd * block_size, n_hidden), generator=g) * (5/3)/((n_embd * block_size)**0.5) 

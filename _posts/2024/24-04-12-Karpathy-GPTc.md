@@ -42,14 +42,14 @@ out = wei @ v
 
 out.shape # B,T,head_size
 ```
-![Alt text](/assets/images/2024/24-04-12-Karpathy-GPTc_files/notes.png)
+![Alt text](/code23/assets/images/2024/24-04-12-Karpathy-GPTc_files/notes.png)
 - Attention can be applied to any graph relations
 - No position information
 - No cross batch interactions
 - encoder-w/o mask. decoder-w mask
 - cross-attention, q/k/v from different source
 - Use scale to control the variance of q@k (will be head_size^2 w/o scale), otherwise the softmax will be one-shot
-![Alt text](/assets/images/2024/24-04-12-Karpathy-GPTc_files/onehot.png)  
+![Alt text](/code23/assets/images/2024/24-04-12-Karpathy-GPTc_files/onehot.png)  
 
 # 2 Multi-heads, FFWD
 Multi-heads attention
@@ -64,7 +64,7 @@ self.heads = nn.ModuleList([Head(head_size) for _ in range(num_heads)])
 FFWD is considered as each token to obsorb the cross-token information, so it's added right after the attention, **communication followed by computation**. 
 
 Also add residue connection and layer norms for better optimization.
-![Alt text](/assets/images/2024/24-04-12-Karpathy-GPTc_files/residual.png)
+![Alt text](/code23/assets/images/2024/24-04-12-Karpathy-GPTc_files/residual.png)
 Layer normal is applied BEFORE the SA and FFWD, which is different from the original paper. It's called **Pre-Norm formation**
 ```python
 def forward(self, x):
@@ -75,10 +75,10 @@ Dropout was also added. One interesting point about dropout is you can considier
 
 ## 3 Encoder
 For translation job, the tokens can talk to each other as much as they want. So the encoder does NOT have mask and generate $K$ and $V$ for the decode. ($Q$ are still from decode input)
-![Alt text](/assets/images/2024/24-04-12-Karpathy-GPTc_files/encoder.png) 
+![Alt text](/code23/assets/images/2024/24-04-12-Karpathy-GPTc_files/encoder.png) 
 
 For GPT3, $n_{model}$ is `n_embed`, which is $n_{heads}*d_{head}$
-![Alt text](/assets/images/2024/24-04-12-Karpathy-GPTc_files/gpt3.png)  
+![Alt text](/code23/assets/images/2024/24-04-12-Karpathy-GPTc_files/gpt3.png)  
 
 Size of parameters can be calculated by following code
 ```python

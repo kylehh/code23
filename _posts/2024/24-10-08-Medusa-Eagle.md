@@ -13,19 +13,19 @@ There are lookahead, and ReDrafter as well.
 
 ## 0 Review of Speculative Decoding
 **Blockwise Parallel Decoding** was introduced by Noam Shazeer([paper link](https://proceedings.neurips.cc/paper/2018/file/c4127b9194fe8562c64dc0f5bf2c93bc-Paper.pdf)) , initially designed for greedy decoding, use **auxiliary models** to predict extra models.
-![Alt text](/assets/images/2024/24-10-08-Medusa-Eagle_files/bpd.png)
+![Alt text](/code23/assets/images/2024/24-10-08-Medusa-Eagle_files/bpd.png)
 In implementation, you don't really need auxiliary models but by modifying the TF iwht multi-output feedforward layers.
-![Alt text](/assets/images/2024/24-10-08-Medusa-Eagle_files/bpdimp.png)
+![Alt text](/code23/assets/images/2024/24-10-08-Medusa-Eagle_files/bpdimp.png)
 This idea leads to Medusa. 
 ## 1 MEDUSA
 Medusa uses ONLY one model as both draft and target models, but with multiple Medusa heads.
-![Alt text](/assets/images/2024/24-10-08-Medusa-Eagle_files/medusa.png)
+![Alt text](/code23/assets/images/2024/24-10-08-Medusa-Eagle_files/medusa.png)
 With top-k for each Medusa head, you will have $n*k_1*k_2...*k_n$ tokens to choose from. 
-![Alt text](/assets/images/2024/24-10-08-Medusa-Eagle_files/tree.png)
+![Alt text](/code23/assets/images/2024/24-10-08-Medusa-Eagle_files/tree.png)
 
 ### 1.1 Structure
 There is a typo in the original paper that $W_2$ should be initialized as the original model head, **NOT $W_1$**  
-![Alt text](/assets/images/2024/24-10-08-Medusa-Eagle_files/typo.png)
+![Alt text](/code23/assets/images/2024/24-10-08-Medusa-Eagle_files/typo.png)
 
 ```python
 # Medusa Block
@@ -38,7 +38,7 @@ class ResBlock(nn.Module):
     def forward(self, x):
         return x + self.act(self.linear(x))
 ```
-![Alt text](/assets/images/2024/24-10-08-Medusa-Eagle_files/heads.png)
+![Alt text](/code23/assets/images/2024/24-10-08-Medusa-Eagle_files/heads.png)
 ```python
 # Medusa Model
 class MedusaModel(nn.Module):
@@ -89,10 +89,10 @@ def compute_loss(self, model, inputs, return_outputs=False):
 ```
 ### 1.3 Inference
 During infenernce, first around you will get output from origin head and Medusa heads(4).
-![Alt text](/assets/images/2024/24-10-08-Medusa-Eagle_files/infer.png)
+![Alt text](/code23/assets/images/2024/24-10-08-Medusa-Eagle_files/infer.png)
 The verify phase will use the predicted results go over the heads and get 5 next tokens.
 After comparison, you will get original token, accepted tokens, and token at the accept_length,like a bonus 
-![Alt text](/assets/images/2024/24-10-08-Medusa-Eagle_files/verify.png)
+![Alt text](/code23/assets/images/2024/24-10-08-Medusa-Eagle_files/verify.png)
 
 ### 1.4 Tree Attention
 The modified tree structure can reduce the tokens to $k_1+k_1*k_2+k_1*k_2*k_3+...+k_1*...*k_n. $

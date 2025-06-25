@@ -12,21 +12,21 @@ Taking notes from EZ Encoder Academy's video [series](https://www.youtube.com/wa
 
 ## 1 What's is AGI 
 Part 1 of the video is explain difference of R1 Zero, using RL only for post-training, and R1, using bootstrapping with cold start. I will skip most of it, and one interesting topic is about security is deepseek, which is 100% vunlerable against attackss
-![Alt text](/assets/images/2025/25-02-14-DeepseekR1-1_files/hack.png)
+![Alt text](/code23/assets/images/2025/25-02-14-DeepseekR1-1_files/hack.png)
 
 A google [paper](https://arxiv.org/pdf/2311.02462) gives the defination of different levels of AGI
-![Alt text](/assets/images/2025/25-02-14-DeepseekR1-1_files/agi.png)
+![Alt text](/code23/assets/images/2025/25-02-14-DeepseekR1-1_files/agi.png)
 
 Deepmind, OAI uses RL to achieve RL, and OAI is more focus on LLM approach since ChatGPT. LLM can be considered as RL, as context is **environment**, LLM is the **agent**, and next token is the **action**. LeCun is thinking JEPA(Joint Embedding Predictive Architecture) is the way to achieve world model. See details [here](https://www.turingpost.com/p/jepa)
-![Alt text](/assets/images/2025/25-02-14-DeepseekR1-1_files/dol.png)
+![Alt text](/code23/assets/images/2025/25-02-14-DeepseekR1-1_files/dol.png)
 
 ## 2 RL in Review
 Comparing Supervised Learning with RL, the GT for SL is very dense, have GT for each data point, while GT for SL is **sparse**, providing rewards after several steps.
 A [paper](https://arxiv.org/pdf/2501.17161) summarized it as "SFT Memorizes, RL Generalizes"
-![Alt text](/assets/images/2025/25-02-14-DeepseekR1-1_files/sftrl.png)
+![Alt text](/code23/assets/images/2025/25-02-14-DeepseekR1-1_files/sftrl.png)
 
 **Policy based method** is to train the agent to take action, like agent being player(actor). **Value based method** is to get a value for agent actions, like a coach to the agent(critic). These two can be combined as in **Actor-Critic method**
-![Alt text](/assets/images/2025/25-02-14-DeepseekR1-1_files/actorcritic.png)
+![Alt text](/code23/assets/images/2025/25-02-14-DeepseekR1-1_files/actorcritic.png)
 
 ## 3 How RL is different from SL
 1. Reward is sparse, so most of the training and optimization tricks in RL is to **get sparse reward properly handel to training the policy network. Like both PPO and GRPO.**
@@ -49,11 +49,11 @@ The training of AlphaGo has three steps
 3. Train the value network from self-play data to evaluate states
 So Move 37 from AlphaGo was considered bad move, but eventually is a great move
 Move 78 from Lee was un-common move, which helped Lee to beat AlphaGo.
-![Alt text](/assets/images/2025/25-02-14-DeepseekR1-1_files/alphago.png)
+![Alt text](/code23/assets/images/2025/25-02-14-DeepseekR1-1_files/alphago.png)
 
 After removing the SL from step 1, DeepMind trained AlphaZero.
-![Alt text](/assets/images/2025/25-02-14-DeepseekR1-1_files/alphazero.png)
+![Alt text](/code23/assets/images/2025/25-02-14-DeepseekR1-1_files/alphazero.png)
 
 ## 5 Book Recommend
 What life should mean to you. On my to-do list now
-![Alt text](/assets/images/2025/25-02-14-DeepseekR1-1_files/book.png)
+![Alt text](/code23/assets/images/2025/25-02-14-DeepseekR1-1_files/book.png)
