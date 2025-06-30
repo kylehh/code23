@@ -58,7 +58,6 @@ class AutoWeightsLoader:
       ...
       autoloaded_weights = set(self._load_module("", self.module, weights))
       ...
-
   def _load_module(
         self,
         base_prefix: str,
@@ -67,3 +66,4 @@ class AutoWeightsLoader:
     ) -> Iterable[str]:
       # call recursively
       ...
+```

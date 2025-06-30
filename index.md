@@ -5,16 +5,10 @@ title: "Hello World!"
 author_profile: true
 ---
 
-I started writing blogs since BBS time, but unfortunately most early time writings are lost  
-  
-Then I blogged on MSN spaces, which was closed down later and all blogs were transferred to wordpress.com (You can still find my blogs there~)    
+I've been blogging for a long time, starting way back in the BBS days! It's a shame most of my early writing from that time is lost. After that, I moved over to MSN Spaces. When it shut down, everything was transferred to WordPress.com (and you can still find my old blogs there!).
 
-I blogged on WeChat these days, mostly posting pictures, and recording my random thoughts
+These days, I mostly use WeChat Moments to post pictures and share random thoughts. I wasn't sure if I needed another blog, but then it hit me: I could use it to keep track of my learning. I've been diving into topics like Stable Diffusion on Lilian Weng's blog and all sorts of AI/ML concepts from Hung-yi Lee's YouTube lectures.
 
-Actually I didn't know what's the purpose of having another blog-ish thing, till one day I found that it can be used to record my learnings.
-
-I read Lilian's blog about Stable Diffusion, watched Hungyi Lee's lectures on youtube about various topics of ML
-
-But I easily lost track of what I learnt after some time, so I decided to record them down, which is easy for me to review and learn better
+The only problem is, I forget things pretty easily after a while. So, I'm going to start writing it all down here. It'll be a great way for me to review what I've learned and hopefully learn it even better. Feel free to check out my posts and join me on the journey!"
  
-Feel free to check out my [posts](https://kylehh.github.io/posts/)
+Feel free to check out my [posts](https://kylehh.github.io/code23/posts/)
