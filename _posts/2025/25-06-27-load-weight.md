@@ -5,7 +5,7 @@ toc: true
 categories:
   - OSS
 tags:
-  - LLM
+  - VLM
 ---
 
 Fixed a weight loading error. It was reporting `There is no module or parameter named` sth at weight loading. It took me couple of days to root cause this issue. One step closer the goal. 
@@ -81,3 +81,5 @@ def def load_weights(...)
   skip_substrs = ["norm_mean", "norm_std"]
   loader = AutoWeightsLoader(self, skip_substrs=skip_substrs)
 ```
+
+The next bug is `hf_pr

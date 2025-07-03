@@ -5,7 +5,7 @@ toc: true
 categories:
   - OSS
 tags:
-  - LLM
+  - VLM
 ---
 
 Notes of updating MM Processor for Paligemma model

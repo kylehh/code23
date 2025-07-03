@@ -5,7 +5,7 @@ toc: true
 categories:
   - Study
 tags:
-  - LLM
+  - VLM
 ---
 
 I didn't start the first blog in 2025 till later Jan. I wasn't quite myself for the first couple of weeks of the new year. Still recovering from the UK trip and putting my mind together.

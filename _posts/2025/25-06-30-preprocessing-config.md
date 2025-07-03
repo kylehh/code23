@@ -5,7 +5,7 @@ toc: true
 categories:
   - OSS
 tags:
-  - LLM
+  - VLM
 ---
 
 There are `preprocessing_config.json` in HF weight
