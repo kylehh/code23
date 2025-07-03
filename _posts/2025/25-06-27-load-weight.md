@@ -8,7 +8,8 @@ tags:
   - LLM
 ---
 
-Fixed a weight loading bug
+Fixed a weight loading error. It was reporting `There is no module or parameter named` sth at weight loading. It took me couple of days to root cause this issue. One step closer the goal. 
+
 ## 1 Weight loading workflow
 ```
 ## worker/gpu_worker.py
@@ -66,4 +67,17 @@ class AutoWeightsLoader:
     ) -> Iterable[str]:
       # call recursively
       ...
+      msg = (f"There is no module or parameter named '{prefix}' "
+             f"in {type(self.module).__name__}")
+      raise ValueError(msg)
+```
+
+## 2 Skip loading options
+When we overriding `load_weights`, we can skip some attributes.  
+In this examples, `norm_mean` and `norm_std` are `registerd_buffer` instead of modules.
+So skip them could fix the bug.
+```python
+def def load_weights(...)
+  skip_substrs = ["norm_mean", "norm_std"]
+  loader = AutoWeightsLoader(self, skip_substrs=skip_substrs)
 ```
