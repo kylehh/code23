@@ -106,25 +106,20 @@ _MULTIMODAL_MODELS = {
 class BaseInternVLProcessor(ABC):
     def __init__(...) -> None:
         super().__init__()
-
         self.config = config
         self.tokenizer = tokenizer
-
         image_size: int = config.force_image_size  #512
         patch_size: int = config.patch_size  #16
-
         if min_dynamic_patch is None:
             min_dynamic_patch = 1  #config.min_dynamic_patch
         assert isinstance(min_dynamic_patch, int)
-
         if max_dynamic_patch is None:
             max_dynamic_patch = 12  #config.max_dynamic_patch
         assert isinstance(max_dynamic_patch, int)
-
         if dynamic_image_size is None:
             dynamic_image_size = True  #config.dynamic_image_size
         assert isinstance(dynamic_image_size, bool)
-```
+```  
 - Define the key model class `Llama_Nemotron_Nano_VL_Model`.  
 Update The vision model. I used to copied all code from RADIOModel but changed to use `AutoModel` instead. 
 ```python
