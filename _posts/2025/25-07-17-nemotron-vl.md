@@ -34,6 +34,8 @@ class LlamaNemotronVLChatModel(nn.Module, SupportsMultiModal, SupportsPP,
 CI test failed with dependance, to fix it
 - add dep at `requirements/test.in`
 - run `pre-commit` and call `pip-compile` to generate `requirments/test.txt`
+- Copy over `test.txt` from CI if it still failed pre-commit
+- Fixed a bug in `docker/Dockerfile.cpu`
 ## 3 Config attributes mapping
 We actually do NOT need to copy the [configuration.py](https://huggingface.co/nvidia/Llama-3.1-Nemotron-Nano-VL-8B-V1/blob/main/configuration.py) from HF just because of some attributes name mismatch.
 - No `Llama_Nemotron_Nano_VL_Config` defined under `vllm/transformers_utis/config/nemotron_vl_config.py`
