@@ -9,7 +9,7 @@ tags:
 ---
 
 The PR for Nemotron Nano VL is still on going. There are more modifications as below
-
+(Finally merged after I just finished this blog)
 ## 1 InternVL's video extention
 Nemotron's support in Video is questionable, and the benchmark is "calculated with 1 tile per image". So I removed all the video related code, and here are some notes
 1. The `BaseInternVLxxx` classes are for image-only
