@@ -1,5 +1,5 @@
 ---
-title: RubeRay Setup and Trouble shooting
+title: KubeRay Setup and Trouble shooting
 mathjax: true
 toc: true
 categories:
