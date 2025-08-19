@@ -5,12 +5,12 @@ toc: true
 categories:
   - Study
 tags:
-  - LLM
+  - Ray/Anyscale
 ---
 
 Trying to get a 2 node 8 GPU (4 GPU from each node) Ray cluster running with KubeRay
 
-## 1 RubeRay configuration
+## 1 KubeRay configuration
 We can customize the `value.yaml` and deploy Ray cluster with KubyRay Operator
 ```sh
 helm install my-ray-cluster kuberay/ray-cluster -f my-value.yaml
