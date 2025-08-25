@@ -1,5 +1,5 @@
 ---
-title: 4Bit Quantization GPTQ and GGUF and 1Bit LLM
+title: Flow and Diffusion models Part 1
 mathjax: true
 toc: true
 categories:
