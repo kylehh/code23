@@ -5,7 +5,7 @@ toc: true
 categories:
   - Study
 tags:
-  - LLM
+  - VLM
 ---
 
 Will start to review Diffusion series from 苏神 [blog](https://kexue.fm/archives/9119). But then I realized that SDE, Langevin and Flow models, are things taught in statiscal mechanics which Im not familiar with. So I decided to take MIT [course](https://diffusion.csail.mit.edu/) on Diffusion  
