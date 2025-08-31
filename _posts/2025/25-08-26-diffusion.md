@@ -48,3 +48,19 @@ CE can be interpreated by the conservation of probability mass.
 From this equation, we can derive the marginalization trick
 
 ## 5 Score Function
+Score function is defined as the grad of the log of the density.
+and marginal score can be get from conditional score
+![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/score.png)
+Now we do SDE extension trick. When there is diffusion terms added in the SDE, the vector field should be adjusted accordingly, so the same condition holds as in the marginalization trick.
+![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/sdeex.png)
+
+## 6 Fokker-Planck Equation
+SDE extension trick can be approved by Fokker-Planck equation, which is the SDE version of the continuity equation.
+![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/fpe.png)
+And the physical interpretation is adding heat dispersion
+![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/heat.png)
+The proof of SDE extension is a bit confusing to me. It actually starts from continuity equation, and then satisfied with Fokker-Planck equation... 
+
+## 7 Summary
+![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/s1.png)
+![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/s2.png)
