@@ -41,7 +41,14 @@ and the loss functions are only diff by a constant
 
 In the Gaussian example, you can also get a simply expression
 ![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/sdesimple.png)
-In the DDPM paper, it actually is the same with the formula above
+In the DDPM paper, it actually is the same with the formula above. This is more straighforward as prediction for the noise. 
 ![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/ddpm.png)
-Now we can get the algrithm for training
+Now we can get the algrithm for training. Still not sure how the plus sign in the loss function works for score matching. predicting the nagative noise?
 ![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/sdetrain.png)
+
+After getting both vector field by flow matching, and score function by score matching, we can get the final formula for SDE. 
+![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/2models.png)
+But in pratice, you only need to train one model, score function, instead of two
+![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/1model.png)
+Because simple algebra can get the conversion of these two
+![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/conversion.png)
