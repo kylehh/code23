@@ -1,5 +1,5 @@
 ---
-title: Flow and Diffusion models Part 2
+title: Flow and Diffusion models Part 2 - Fokker-Planck
 mathjax: true
 toc: true
 categories:

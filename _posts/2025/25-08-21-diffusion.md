@@ -47,7 +47,7 @@ random variables.
 Brownian motion is also called a **Wiener process**, which is why we denote it with a "W".
 
 ## 3 Diffusion Model
-Now we use SDE to replace ODE in the flow model so that we can get difuufsion models, with a diffusion coefficient $\sigma_t$
+Now we use SDE to replace ODE in the flow model so that we can get diffusion models, with a diffusion coefficient $\sigma_t$
 ![Alt text](/code23/assets/images/2025/25-08-21-diffusion_files/sde.png)
 Since we can NOT use derivatives for a stachastic process. so let's rewrite both ODE and SDE without derivatives. 
 ![Alt text](/code23/assets/images/2025/25-08-21-diffusion_files/noderivatives.png)
