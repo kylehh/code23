@@ -1,5 +1,5 @@
 ---
-title: Flow and Diffusion models Part 1
+title: Flow and Diffusion models Part 1 - Flow and Diffusion 
 mathjax: true
 toc: true
 categories:

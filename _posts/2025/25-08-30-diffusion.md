@@ -1,5 +1,5 @@
 ---
-title: Flow and Diffusion models Part 3 - Langevin
+title: Flow and Diffusion models Part 3 - Langevin and Matching
 mathjax: true
 toc: true
 categories:
