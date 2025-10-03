@@ -12,14 +12,14 @@ tags:
 Finished Lab 1, implemented flow and diffusion models and implemented Langevin Dynamics
 
 ## 0 Langevin Dynamics
-Setting $p_t=p$ constant, and let $u^{target}=0$, we can a special case of Langevin Dynamics
+Setting $p_t=p$ constant, and let $u^{target}=0$, we can have a special case of Langevin Dynamics
 ![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/langevin.png)
 
-We can approve that it's a special case of OU process when have zero mean and $\frac{\sigma^2}{2\theta}$ var
+We can approve that it's a special case of OU process when setting zero mean and $\frac{\sigma^2}{2\theta}$ var
 ![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/ou.png)
 
 ## 1 Flow Matching
-Flow matching is actually **vector field** matching used for flow models
+Flow matching is actually **vector field** matching used on flow model training
 ![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/fm.png)
 Unfortunately, the marginal vector field is intractable, we have to turn to **Conditional Flow Matching**
 ![Alt text](/code23/assets/images/2025/25-08-30-diffusion_files/cfm.png)

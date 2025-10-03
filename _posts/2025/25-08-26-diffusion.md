@@ -14,7 +14,7 @@ This is the most mathmatical chanllenging part of the lecture, but also covers a
 ## 1 Training goal
 Review two models we learned so far
 ![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/2models.png)
-Learning goal is to find the formula for the target vector field such taht corresponding ODE/SDE convert $p_init$ to $p_data$
+Learning goal is to find the formula for the target vector field such that corresponding ODE/SDE convert $p_{init}$ to $p_{data}$
 ![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/traininggoal.png)
 
 Two key concepts
@@ -36,7 +36,7 @@ If we simulate a ODE with a conditional vector field, then any state on the traj
 ![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/cvf.png)
 The Gaussian example is given by 
 ![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/gvf.png)
-The Marginalization Trick, which can be approved by Continity equation, 
+The Marginalization Trick, which can be approved by Continuity equation, 
 ![Alt text](/code23/assets/images/2025/25-08-26-diffusion_files/mvf.png)
 
 Here is the comparison of these two under ODE samples
