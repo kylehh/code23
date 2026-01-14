@@ -47,3 +47,4 @@ out2 = torch.mm(a, b)[:1] # (B,D)*(D,D)=(B,D)->(1,D)
 print((out1 - out2).abs().max()) # tensor(1669.2500, device='cuda:0') ## This is huge!
 ```
 ## 3 How to create batch-invariant kernels
+3 Operations that involve reductions - RMSNorm, matrix multiplication, and attention.
